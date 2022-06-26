@@ -5568,13 +5568,13 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
-export type CreateSubcribeMutationVariables = Exact<{
+export type CreateSubscribeMutationVariables = Exact<{
   name: Scalars['String'];
   email: Scalars['String'];
 }>;
 
 
-export type CreateSubcribeMutation = { __typename?: 'Mutation', createSubscriber?: { __typename?: 'Subscriber', id: string } | null };
+export type CreateSubscribeMutation = { __typename?: 'Mutation', createSubscriber?: { __typename?: 'Subscriber', id: string } | null };
 
 export type GetLessonBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
@@ -5589,40 +5589,40 @@ export type GetLessonsQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetLessonsQuery = { __typename?: 'Query', lessons: Array<{ __typename?: 'Lesson', id: string, lessonType: LessonType, availableAt?: any | null, title: string, slug: string }> };
 
 
-export const CreateSubcribeDocument = gql`
-    mutation CreateSubcribe($name: String!, $email: String!) {
+export const CreateSubscribeDocument = gql`
+    mutation CreateSubscribe($name: String!, $email: String!) {
   createSubscriber(data: {name: $name, email: $email}) {
     id
   }
 }
     `;
-export type CreateSubcribeMutationFn = Apollo.MutationFunction<CreateSubcribeMutation, CreateSubcribeMutationVariables>;
+export type CreateSubscribeMutationFn = Apollo.MutationFunction<CreateSubscribeMutation, CreateSubscribeMutationVariables>;
 
 /**
- * __useCreateSubcribeMutation__
+ * __useCreateSubscribeMutation__
  *
- * To run a mutation, you first call `useCreateSubcribeMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateSubcribeMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useCreateSubscribeMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateSubscribeMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createSubcribeMutation, { data, loading, error }] = useCreateSubcribeMutation({
+ * const [createSubscribeMutation, { data, loading, error }] = useCreateSubscribeMutation({
  *   variables: {
  *      name: // value for 'name'
  *      email: // value for 'email'
  *   },
  * });
  */
-export function useCreateSubcribeMutation(baseOptions?: Apollo.MutationHookOptions<CreateSubcribeMutation, CreateSubcribeMutationVariables>) {
+export function useCreateSubscribeMutation(baseOptions?: Apollo.MutationHookOptions<CreateSubscribeMutation, CreateSubscribeMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateSubcribeMutation, CreateSubcribeMutationVariables>(CreateSubcribeDocument, options);
+        return Apollo.useMutation<CreateSubscribeMutation, CreateSubscribeMutationVariables>(CreateSubscribeDocument, options);
       }
-export type CreateSubcribeMutationHookResult = ReturnType<typeof useCreateSubcribeMutation>;
-export type CreateSubcribeMutationResult = Apollo.MutationResult<CreateSubcribeMutation>;
-export type CreateSubcribeMutationOptions = Apollo.BaseMutationOptions<CreateSubcribeMutation, CreateSubcribeMutationVariables>;
+export type CreateSubscribeMutationHookResult = ReturnType<typeof useCreateSubscribeMutation>;
+export type CreateSubscribeMutationResult = Apollo.MutationResult<CreateSubscribeMutation>;
+export type CreateSubscribeMutationOptions = Apollo.BaseMutationOptions<CreateSubscribeMutation, CreateSubscribeMutationVariables>;
 export const GetLessonBySlugDocument = gql`
     query GetLessonBySlug($slug: String) {
   lesson(where: {slug: $slug}) {

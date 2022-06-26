@@ -1,8 +1,9 @@
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
-import { useCreateSubcribeMutation } from "../graphql/generated";
+import { useCreateSubscribeMutation } from "../graphql/generated";
 import code_mockup from "../assets/code-mockup.png";
+import { goToEvent } from "../routes/coodinator";
 
 export function Subscribe() {
     const navigate = useNavigate();
@@ -10,18 +11,21 @@ export function Subscribe() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
-    const [ createSubscriber, { loading } ] = useCreateSubcribeMutation();
+    const [ createSubscriber, { loading } ] = useCreateSubscribeMutation();
 
-    async function handleSubscribe(event: FormEvent) {
+    function handleSubscribe(event: FormEvent) {
         event.preventDefault();
         
-        await createSubscriber({
+        createSubscriber({
             variables: {
                 name,
                 email,
             }
+        }).then((res) => {
+            let token = res.data?.createSubscriber?.id as string
+            localStorage.setItem("token", token)
+            goToEvent(navigate);
         });
-        navigate('/event/lesson/abertura-ignite-lab-o-poder-do-react-js')
     };
 
     return (
